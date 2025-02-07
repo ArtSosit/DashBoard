@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style></style>
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h5 class="ms-3 mb-0 text-white">DashBoard</h5>
+        </div>
+
+        <div
+          class="offcanvas offcanvas-start text-bg-dark"
+          data-bs-scroll="true"
+          tabindex="-1"
+          id="offcanvasDarkNavbar"
+          aria-labelledby="offcanvasDarkNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+              DashBoard
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-xxl">
+      <div class="row mt-2">
+        <div
+          class="m-1 card border-primary mb-3 pagelayer-counter-holder col d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="pagelayer-counter-content">
+            <span class="pagelayer-counter-display" data-target="589">0</span>
+          </div>
+          <span class="pagelayer-counter-info">ปกติ</span>
+        </div>
+
+        <div
+          class="m-1 card border-primary mb-3 pagelayer-counter-holder col d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="pagelayer-counter-content">
+            <span class="pagelayer-counter-display" data-target="546">0</span>
+          </div>
+          <span class="pagelayer-counter-info">พักการเรียน</span>
+        </div>
+
+        <div
+          class="m-1 card border-primary mb-3 pagelayer-counter-holder col d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="pagelayer-counter-content">
+            <span class="pagelayer-counter-display" data-target="256">0</span>
+          </div>
+          <span class="pagelayer-counter-info">ลาพัก</span>
+        </div>
+
+        <div
+          class="m-1 card border-primary mb-3 pagelayer-counter-holder col d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="pagelayer-counter-content">
+            <span class="pagelayer-counter-display" data-target="123">0</span>
+          </div>
+          <span class="pagelayer-counter-info">สำเร็จการศึกษา</span>
+        </div>
+      </div>
+
+      <div class="container-chart">
+        <!-- <div class="card"><div id="container2"></div></div> -->
+        <div class="card"><div id="container"></div></div>
+        <div class="card"><div id="container3"></div></div>
+        <div class="card"><div id="container4"></div></div>
+        <div class="card"><div id="container5"></div></div>
+        <div class="card"><div id="container6"></div></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chart = Highcharts.chart("container", {
+        chart: {
+          type: "pie",
+          options3d: {
+            enabled: true,
+            alpha: 45,
+          },
+          height: 300, // เพิ่มความสูงของกราฟ
+        },
+        title: {
+          text: "จำนวนนิสิตแยกตามเพศ",
+          style: { fontSize: "14px" }, // 🔥 เพิ่มขนาดฟอนต์ Title
+        },
+        plotOptions: {
+          pie: {
+            innerSize: 80, // ปรับขนาดวงกลม
+            depth: 45,
+            dataLabels: {
+              enabled: true,
+              style: { fontSize: "12px", fontWeight: "bold" }, // 🔥 เพิ่มขนาดฟอนต์ข้อมูล
+            },
+          },
+        },
+        series: [
+          {
+            name: "จำนวน",
+            data: [
+              ["ชาย", 16],
+              ["หญิง", 12],
+              ["อื่นๆ", 8],
+            ],
+          },
+        ],
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chart = Highcharts.chart("container2", {
+        chart: {
+          type: "column",
+          options3d: {
+            enabled: true,
+            alpha: 10,
+            beta: 10,
+            depth: 40,
+          },
+          height: 300, // เพิ่มความสูงของกราฟ
+        },
+        title: {
+          text: "นิสิตแยกตามสถานะ",
+          style: { fontSize: "14px" }, // 🔥 เพิ่มขนาดฟอนต์ Title
+        },
+        xAxis: {
+          type: "category",
+          labels: { style: { fontSize: "12px", fontWeight: "bold" } }, // 🔥 เพิ่มขนาดฟอนต์แกน X
+        },
+        yAxis: {
+          title: { text: null },
+          labels: { style: { fontSize: "12px", fontWeight: "bold" } }, // 🔥 เพิ่มขนาดฟอนต์แกน Y
+        },
+        series: [
+          {
+            name: "จำนวน",
+            data: [
+              ["ปกติ", 1795],
+              ["พักการเรียน", 1242],
+              ["ลาพัก", 1074],
+              ["สำเร็จการศึกษา", 832],
+            ],
+            colorByPoint: true,
+            dataLabels: {
+              enabled: true,
+              style: { fontSize: "12px", fontWeight: "bold" }, // 🔥 เพิ่มฟอนต์ตัวเลขในกราฟ
+            },
+          },
+        ],
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chart = Highcharts.chart("container3", {
+        chart: {
+          type: "column",
+          height: 300, // ✅ ปรับให้เท่ากับกราฟอื่น
+        },
+        title: {
+          text: "จำนวนนิสิตต่างชาติ",
+          style: { fontSize: "14px" }, // ✅ เพิ่มขนาดฟอนต์
+        },
+        // subtitle: {
+        //   text:
+        //     'Source: <a target="_blank" ' +
+        //     'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
+        //   style: { fontSize: "10px" }, // ✅ ลดขนาดฟอนต์ subtitle
+        // },
+        xAxis: {
+          type: "category",
+          crosshair: true,
+          labels: { style: { fontSize: "12px", fontWeight: "bold" } }, // ✅ ปรับขนาดแกน X
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            type: "category",
+            text: "จำนวนนิสิต",
+            style: { fontSize: "12px" }, // ✅ ปรับขนาดฟอนต์แกน Y
+          },
+          labels: { style: { fontSize: "12px", fontWeight: "bold" } }, // ✅ ปรับขนาดฟอนต์แกน Y
+        },
+        tooltip: {
+          // valueSuffix: " (1000 MT)",
+          style: { fontSize: "12px" }, // ✅ ปรับขนาดฟอนต์ tooltip
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+          },
+        },
+        series: [
+          {
+            name: "จำนวน",
+            data: [
+              ["จีน", 17950],
+              ["ญี่ปุ่น", 1242],
+            ],
+            colorByPoint: true,
+            dataLabels: {
+              enabled: true,
+              style: { fontSize: "12px", fontWeight: "bold" }, // 🔥 เพิ่มฟอนต์ตัวเลขในกราฟ
+            },
+          },
+        ],
+      });
+    });
+  </script>
+  <script>
+    (function (H) {
+      H.seriesTypes.pie.prototype.animate = function (init) {
+        const series = this,
+          chart = series.chart,
+          points = series.points,
+          { animation } = series.options,
+          { startAngleRad } = series;
+
+        function fanAnimate(point, startAngleRad) {
+          const graphic = point.graphic,
+            args = point.shapeArgs;
+
+          if (graphic && args) {
+            graphic
+              // Set inital animation values
+              .attr({
+                start: startAngleRad,
+                end: startAngleRad,
+                opacity: 1,
+              })
+              // Animate to the final position
+              .animate(
+                {
+                  start: args.start,
+                  end: args.end,
+                },
+                {
+                  duration: animation.duration / points.length,
+                },
+                function () {
+                  // On complete, start animating the next point
+                  if (points[point.index + 1]) {
+                    fanAnimate(points[point.index + 1], args.end);
+                  }
+                  // On the last point, fade in the data labels, then
+                  // apply the inner size
+                  if (point.index === series.points.length - 1) {
+                    series.dataLabelsGroup.animate(
+                      {
+                        opacity: 1,
+                      },
+                      void 0,
+                      function () {
+                        points.forEach((point) => {
+                          point.opacity = 1;
+                        });
+                        series.update(
+                          {
+                            enableMouseTracking: true,
+                          },
+                          false
+                        );
+                        chart.update({
+                          plotOptions: {
+                            pie: {
+                              innerSize: "40%",
+                              borderRadius: 8,
+                            },
+                          },
+                        });
+                      }
+                    );
+                  }
+                }
+              );
+          }
+        }
+
+        if (init) {
+          // Hide points on init
+          points.forEach((point) => {
+            point.opacity = 0;
+          });
+        } else {
+          fanAnimate(points[0], startAngleRad);
+        }
+      };
+    })(Highcharts);
+
+    Highcharts.chart("container4", {
+      chart: {
+        height: 300,
+        type: "pie",
+      },
+      title: {
+        text: "จำนวนนิสิตปัจจุบันแยกตามระดับการศึกษา",
+        style: { fontSize: "14px" }, // ✅ เพิ่มขนาดฟอนต์
+      },
+      tooltip: {
+        headerFormat: "",
+        pointFormat:
+          '<span style="color:{point.color}">\u25cf</span> ' +
+          "{point.name}: <b>{point.y} คน</b>", // ✅ เปลี่ยนเป็นจำนวนเต็ม
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          borderWidth: 2,
+          cursor: "pointer",
+          dataLabels: {
+            enabled: true,
+            format: "<b>{point.name}</b><br>{point.y} คน", // ✅ เปลี่ยนเป็นจำนวนเต็ม
+            style: { fontSize: "12px", fontWeight: "bold" }, // ✅ ปรับขนาดฟอนต์
+          },
+        },
+      },
+      series: [
+        {
+          enableMouseTracking: false,
+          animation: {
+            duration: 1000,
+          },
+          colorByPoint: true,
+          data: [
+            {
+              name: "ปริญญาตรี",
+              y: 15000,
+            },
+            {
+              name: "ปริญญาโท",
+              y: 4000,
+            },
+            {
+              name: "ปริญญาเอก",
+              y: 2000,
+            },
+          ],
+        },
+      ],
+    });
+  </script>
+  <script>
+    Highcharts.chart("container5", {
+      chart: {
+        type: "column",
+        height: 350,
+      },
+      title: {
+        text: "จำนวนนิสิตปัจจุบันแยกตามประเภทการรับเข้า",
+      },
+      xAxis: {
+        categories: [
+          "TCAS รอบ 1 (Portfolio)",
+          "TCAS รอบ 2 (Quota)",
+          "TCAS รอบ 3 (Admission)",
+          "TCAS รอบ 4 (Direct)",
+          "โครงการพิเศษ",
+        ],
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: "จำนวน (คน)",
+        },
+      },
+      tooltip: {
+        pointFormat: "<b>{point.y} คน</b>",
+      },
+      plotOptions: {
+        column: {
+          borderRadius: 5,
+          dataLabels: {
+            enabled: true,
+          },
+        },
+      },
+      series: [
+        {
+          name: "นิสิต",
+          data: [4500, 6000, 5000, 3000, 2000],
+          color: "#007bff",
+        },
+      ],
+    });
+  </script>
+  <script>
+    Highcharts.chart("container6", {
+      chart: {
+        type: "pie",
+        height: 350,
+      },
+      title: {
+        text: "จำนวนนิสิตปัจจุบันแยกตามกลุ่มคณะ",
+      },
+      tooltip: {
+        pointFormat: "<b>{point.name}</b>: {point.y} คน",
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: "pointer",
+          dataLabels: {
+            enabled: true,
+            format: "<b>{point.name}</b>: {point.y} คน",
+            distance: 20,
+          },
+        },
+      },
+      series: [
+        {
+          name: "กลุ่มคณะ",
+          colorByPoint: true,
+          data: [
+            {
+              name: "คณะวิศวกรรมศาสตร์",
+              y: 5000,
+            },
+            {
+              name: "คณะเศรษฐศาสตร์",
+              y: 4500,
+            },
+            {
+              name: "คณะศึกษาศาสตร์",
+              y: 3500,
+            },
+            {
+              name: "คณะมนุษยศาสตร์",
+              y: 4000,
+            },
+            {
+              name: "คณะสาธารณสุขศาสตร์",
+              y: 3000,
+            },
+          ],
+        },
+      ],
+    });
+  </script>
+
+  <!-- test -->
+  <script>
+    // JavaScript to animate multiple counters
+    document
+      .querySelectorAll(".pagelayer-counter-display")
+      .forEach((counter) => {
+        const targetValue = +counter.getAttribute("data-target"); // Target value
+        const duration = targetValue; // Duration in milliseconds (shared)
+        const startValue = 1; // Starting number
+        const stepTime = Math.round(duration / targetValue); // Time per increment
+
+        let currentValue = startValue;
+
+        const incrementCounter = () => {
+          if (currentValue < targetValue) {
+            currentValue++;
+            counter.textContent = currentValue;
+            setTimeout(incrementCounter, stepTime);
+          }
+        };
+
+        incrementCounter();
+      });
+  </script>
+</html>
